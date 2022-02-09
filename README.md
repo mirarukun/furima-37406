@@ -28,7 +28,7 @@ has_many :purchases
 | category_id | integer | null:false |
 | status_id | integer | null:false |
 | shipping_information_id | integer | null:false |
-| shipping_area_id | integer | null:false |
+| prefecture_id | integer | null:false |
 | shipping_day_id | integer | null:false | 
 | user | references | null:false, foreign_key:true |
 
@@ -56,7 +56,7 @@ has_one :shipping, dependent: :destroy
 |Column|Type|Options|
 |------|----|-------|
 | post_code | number | null:false |
-| prefectures | string | null:false |
+| prefecture_id | integer | null:false |
 | municipalities | string | null:false |
 | house_number | number | null:false |
 | building_name | string | |
