@@ -25,10 +25,11 @@ has_many :purchases
 |------|----|-------|
 | item_name | string | null:false |
 | item_text | text | null:false |
-| category | string | null:false |
-| status | string | null:false |
-| shipping_information | string | null:false |
-| shipping_area |string | null:false |
+| category_id | integer | null:false |
+| status_id | integer | null:false |
+| shipping_information_id | integer | null:false |
+| shipping_area_id | integer | null:false |
+| shipping_day_id | integer | null:false | 
 | user_id | references | null:false, foreign_key:true |
 
 ### Association
