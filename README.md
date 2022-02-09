@@ -58,7 +58,7 @@ has_one :shipping, dependent: :destroy
 | post_code | number | null:false |
 | prefecture_id | integer | null:false |
 | municipalities | string | null:false |
-| house_number | number | null:false |
+| house_number | string | null:false |
 | building_name | string | |
 | telephone_number | number | null:false |
 | purchase | references | null:false,foreign_key:true |
