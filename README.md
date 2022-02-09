@@ -8,8 +8,10 @@
 | email              | string | null: false, uniqueness:true |
 | encrypted_password | string | null: false                  |
 | birthday | date | null: false   |
-| name_chinese | string | null:false  |
-| name_katakana | string | null:false |
+| last_name_chinese | string | null:false  |
+| first_name_chinese | string | null:false |
+| last_name_katakana | string | null:false |
+| first_name_katakana | string | null:false |
 
 ### Association
 has_many :items, dependent: :destroy
