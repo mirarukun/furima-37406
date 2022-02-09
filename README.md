@@ -6,7 +6,7 @@
 |------|----|-------|
 | nickname | string | null: false|
 | email              | string | null: false, uniqueness:true |
-| password | string | null: false                  |
+| encrypted_password | string | null: false                  |
 | birthday | number | null: false   |
 | name_chinese | string | null:false  |
 | name_katakana | string | null:false |
