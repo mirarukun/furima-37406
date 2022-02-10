@@ -4,10 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :birthday, presence: true
-         validates :last_name_chinese, presence: true
-         validates :first_name_chinese, presence: true
-         validates :last_name_katakana, presence: true
-         validates :first_name_katakana, presence: true
 
+         with_options presence:true do
+            validates :nickname
+            validates :birthday
+            validates :last_name_chinese ,format: { with:/\A[ぁ-んァ-ヶ一-龥々ー]+\z/ , message:"Last name is invalid. Input full-width characters"}
+            validates :first_name_chinese ,format: { with:/\A[ぁ-んァ-ヶ一-龥々ー]+\z/ , message:"First name is invalid. Input full-width characters"}
+            validates :last_name_katakana ,format: { with: /\A[ァ-ヶー]+\z/ , message:"Last name kana is invalid. Input full-width katakana characters"}
+            validates :first_name_katakana ,format: { with: /\A[ァ-ヶー]+\z/ , message:"First name kana is invalid. Input full-width katakana characters"}
+          end
 end
