@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :category
-    belongs_to :status_id
-    belongs_to :shipping_information_id
-    belongs_to :prefecture_id
-    belongs_to :shipping_day_id
+    belongs_to :status
+    belongs_to :shipping_information
+    belongs_to :prefecture
+    belongs_to :shipping_day
 
   belongs_to :user
   # has_one :purchase, dependent: :destroy   purchaseモデル作ったらコメントアウト外す予定
