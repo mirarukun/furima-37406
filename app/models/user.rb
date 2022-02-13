@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+  has_many :items, dependent: :destroy
+  # has_many :purchases   purchaseモデル作ったらコメントアウト外す予定
+         
          with_options presence:true do
             validates :nickname
             validates :birthday
