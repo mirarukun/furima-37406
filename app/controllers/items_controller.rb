@@ -46,8 +46,8 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-end
 
-def assign_to_item_instance
-  @item = Item.find(params[:id])
+  def assign_to_item_instance
+    @item = Item.find(params[:id])
+  end
 end
