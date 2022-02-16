@@ -1,20 +1,24 @@
 class PurchaseShipping
   include ActiveModel::Model
-  attr_accessor :user, :item, :post_code, :prefecture, :municipalities,
-   :house_number, :building, :telephone_number, :purchase
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipalities,
+   :house_number, :building_name, :telephone_number, :purchase
 
    with_options presence: true do
-    validates :post_code
-    validates :prefecture
+    validates :user_id
+    validates :item_id
+    validates :post_code , format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :prefecture_id
     validates :municipalities
     validates :house_number
-    validates :telephone_number
+    validates :telephone_number, format: {with:/\A\d{10,11}\z/}
     validates :purchase
    end
 
+    validates :category_id ,numericality: { other_than: 0, message: "can't be blank" } 
+
   def save
-    Purchase.create(user: user,item: item)
-    Shipping.create(post_code: post_code, prefecture: prefecture, municipalities: municipalities, house_number: house_number,
-     building: building, telephone_number: telephone_number, purchase: purchase)
+    purchase = Purchase.create(user_id: user_id,item_id: item_id)
+    shipping = Shipping.create(post_code: post_code, prefecture_id: prefecture_id, municipalities: municipalities, house_number: house_number,
+     building_name: building_name, telephone_number: telephone_number, purchase: purchase)
   end
 end
