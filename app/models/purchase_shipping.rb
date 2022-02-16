@@ -11,14 +11,13 @@ class PurchaseShipping
     validates :municipalities
     validates :house_number
     validates :telephone_number, format: {with:/\A\d{10,11}\z/}
-    validates :purchase
    end
 
     validates :category_id ,numericality: { other_than: 0, message: "can't be blank" } 
 
   def save
     purchase = Purchase.create(user_id: user_id,item_id: item_id)
-    shipping = Shipping.create(post_code: post_code, prefecture_id: prefecture_id, municipalities: municipalities, house_number: house_number,
-     building_name: building_name, telephone_number: telephone_number, purchase: purchase)
+    Shipping.create(post_code: post_code, prefecture_id: prefecture_id, municipalities: municipalities, house_number: house_number,
+     building_name: building_name, telephone_number: telephone_number, purchase_id: purchase.id)
   end
 end
