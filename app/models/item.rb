@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   belongs_to :user
-  # has_one :purchase, dependent: :destroy   purchaseモデル作ったらコメントアウト外す予定
+  has_one :purchase, dependent: :destroy
   has_one_attached :image
 
   with_options presence: true do
