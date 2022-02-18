@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase = Purchase.includes(:user, :item)
   end
 
   def edit
