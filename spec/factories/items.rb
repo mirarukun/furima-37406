@@ -7,7 +7,7 @@ FactoryBot.define do
     shipping_information { ShippingInformation.where.not(id: 0).sample }
     prefecture { Prefecture.where.not(id: 0).sample }
     shipping_day { ShippingDay.where.not(id: 0).sample }
-    price { 100_000 }
+    price { 100000 }
 
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
