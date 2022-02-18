@@ -26,6 +26,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @purchase = Purchase.includes(:user, :item)
+    if @item.purchase.present?
+      redirect_to action: :index
+    end
   end
 
   def update
