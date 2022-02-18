@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
-    @purchase = Purchase.includes(:user, :item)
   end
 
   def new
@@ -22,11 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @purchase = Purchase.includes(:user, :item)
   end
 
   def edit
-    @purchase = Purchase.includes(:user, :item)
     if @item.purchase.present?
       redirect_to action: :index
     end
