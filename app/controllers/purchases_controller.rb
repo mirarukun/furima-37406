@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :assign_to_purchase_item_instance
+  before_action :move_to_root
   def index
     @purchase_shipping = PurchaseShipping.new
   end
@@ -33,5 +34,11 @@ class PurchasesController < ApplicationController
 
   def assign_to_purchase_item_instance
     @item = Item.find(params[:item_id])
+  end
+
+  def move_to_root
+    if @item.purchase.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 end
