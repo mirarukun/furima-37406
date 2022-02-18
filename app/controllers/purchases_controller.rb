@@ -1,11 +1,11 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :assign_to_purchase_item_instance
   def index
-    @item = Item.find(params[:item_id])
     @purchase_shipping = PurchaseShipping.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_shipping = PurchaseShipping.new(purchase_params)
     if @purchase_shipping.valid?
       pay_item
@@ -29,5 +29,9 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token], 
       currency: 'jpy'
     )
+  end
+
+  def assign_to_purchase_item_instance
+    @item = Item.find(params[:item_id])
   end
 end
